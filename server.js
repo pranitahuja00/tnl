@@ -4,7 +4,7 @@ const path=require('path');
 const mongoose = require('mongoose');
 const register=require('./models/user')
 
-mongoose.connect('mongodb://localhost:27017/tnl', {useNewUrlParser:true, useUnifiedTopology:true}).then(()=>{
+mongoose.connect('https://data.mongodb-api.com/app/data-twvnl/endpoint/data/beta', {useNewUrlParser:true, useUnifiedTopology:true}).then(()=>{
     console.log("Connection successful");
 }).catch((e)=>{
     console.log("Connection failed");
