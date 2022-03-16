@@ -15,25 +15,25 @@ app.use(express.static('../client/public'));
 app.use(express.urlencoded({extended:false}));
 
 app.get('/register', async(req, res)=>{
-    res.sendFile(path.join(__dirname, '../client/public/register.html'));
+    res.sendFile(path.join(__dirname, './public/register.html'));
 });
 app.get('/', async(req, res)=>{
-    res.sendFile(path.join(__dirname, '../client/public/login.html'));
+    res.sendFile(path.join(__dirname, './public/login.html'));
 });
 /* app.get('/index', async(req, res)=>{
-    res.sendFile(path.join(__dirname, '../client/public/index.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
 }); */
 app.get('/about', async(req, res)=>{
-    res.sendFile(path.join(__dirname, '../client/public/about.html'));
+    res.sendFile(path.join(__dirname, './public/about.html'));
 });
 app.get('/contact', async(req, res)=>{
-    res.sendFile(path.join(__dirname, '../client/public/contact.html'));
+    res.sendFile(path.join(__dirname, './public/contact.html'));
 });
 app.post('/register', async(req, res)=>{
     const user = new register({id:Date.now(),fname: req.body.Name, lname: req.body.LastName, email:req.body.Email, password:req.body.Password, month:req.body.birthday_month, day: req.body.birthday_day, year:req.body.birthday_year, gender:req.body.radiobutton});
     await user.save();
     console.log(req.body);
-    res.sendFile(path.join(__dirname, '../client/public/login.html'));
+    res.sendFile(path.join(__dirname, './public/login.html'));
    
 });
 app.post('/login', async(req, res)=>{
@@ -42,7 +42,7 @@ app.post('/login', async(req, res)=>{
         const password = req.body.Password;
         const user = await register.findOne({email:email});
         if(user.password === password){
-            res.status(201).sendFile(path.join(__dirname, '../client/public/index.html'))
+            res.status(201).sendFile(path.join(__dirname, './public/index.html'))
         }
         else{
             res.send("Invalid Password");
