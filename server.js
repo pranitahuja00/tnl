@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost:27017/tnl', {useNewUrlParser:true, useUnif
 });
 const con = mongoose.connection;
 app.use(express.json());
-app.use(express.static('../client/public'));
+app.use(express.static('./public'));
 app.use(express.urlencoded({extended:false}));
 
 app.get('/register', async(req, res)=>{
